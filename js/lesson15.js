@@ -1,174 +1,183 @@
 // tower of hanoi
-function move(source, destination) {
-  console.log(`${source} -> ${destination}`);
-}
+{
 
-function solveHanoi(number, source, destination, extra) {
-  if (number <= 0) {
-    return;
+  function move(source, destination) {
+    console.log(`${source} -> ${destination}`);
   }
 
-  solveHanoi(number - 1, source, extra, destination);
-  move(source, destination);
-  solveHanoi(number - 1, extra, destination, source);
+  function solveHanoi(number, source, destination, extra) {
+    if (number <= 0) {
+      return;
+    }
+
+    solveHanoi(number - 1, source, extra, destination);
+    move(source, destination);
+    solveHanoi(number - 1, extra, destination, source);
+  }
+
+  solveHanoi(4, "Source", "Destination", "Extra");
+
 }
-
-solveHanoi(4, "Source", "Destination", "Extra");
-
 // --------------------------
+{
 
-function getFirstTermFrom(str) {
-  let strResult = "";
-  for (let i = 0; i < str.length; i += 1) {
-    if (!isOperation(str[i])) {
-      strResult += str[i]
-    } else {
-      return Number(strResult);
+  function getFirstTermFrom(str) {
+    let strResult = "";
+    for (let i = 0; i < str.length; i += 1) {
+      if (!isOperation(str[i])) {
+        strResult += str[i]
+      } else {
+        return Number(strResult);
+      }
     }
+
+    return Number(strResult);
   }
 
-  return Number(strResult);
-}
-
-function isOperation(s) {
-  return s == "+" || s == "-" || s == "*" || s == "/";
-}
-
-function getOperation(str) {
-  for (let i = 0; i < str.length; i += 1) {
-    if (isOperation(str[i])) {
-      return str[i];
-    }
+  function isOperation(s) {
+    return s == "+" || s == "-" || s == "*" || s == "/";
   }
 
-}
-
-let s = "213+14";
-
-
-// H.A. #1 add "/", "*"
-
-// H.A. #2
-function getIndexOfOperation(str) {
-  for (let i = 0; i < str.length; i += 1) {
-    if (isOperation(str[i])) {
-      return i;
+  function getOperation(str) {
+    for (let i = 0; i < str.length; i += 1) {
+      if (isOperation(str[i])) {
+        return str[i];
+      }
     }
+
   }
 
-  return -1;
-}
+  let s = "213+14";
 
-console.log(getIndexOfOperation("123+4+6+9")) // 3
-console.log(getIndexOfOperation("234125")) // -1
 
-function calculate(str) {
-  let result = 0;
-  let indexOfOperation;
-  do {
-    indexOfOperation = getIndexOfOperation(str);
-    result += getFirstTermFrom(str);
+  // H.A. #1 add "/", "*"
 
-    if (indexOfOperation >= 0) {
-      str = str.substr(indexOfOperation + 1)
+  // H.A. #2
+  function getIndexOfOperation(str) {
+    for (let i = 0; i < str.length; i += 1) {
+      if (isOperation(str[i])) {
+        return i;
+      }
     }
 
-  } while (indexOfOperation >= 0);
+    return -1;
+  }
 
-  return result;
+  console.log(getIndexOfOperation("123+4+6+9")) // 3
+  console.log(getIndexOfOperation("234125")) // -1
+
+  function calculate(str) {
+    let result = 0;
+    let indexOfOperation;
+    do {
+      indexOfOperation = getIndexOfOperation(str);
+      result += getFirstTermFrom(str);
+
+      if (indexOfOperation >= 0) {
+        str = str.substr(indexOfOperation + 1)
+      }
+
+    } while (indexOfOperation >= 0);
+
+    return result;
+  }
+
+  // H.A. #3
+  s = "1+2+13";
+
+  console.log(calculate(s))// 16
+
 }
-
-// H.A. #3
-s = "1+2+13";
-
-console.log(calculate(s))// 16
-
 //// --------
+{
 
-function calculate(str) {
-  const indexOfOperation = getIndexOfOperation(str);
+  function calculate(str) {
+    const indexOfOperation = getIndexOfOperation(str);
 
-  if (indexOfOperation == -1) {
-    return getFirstTermFrom(str);
+    if (indexOfOperation == -1) {
+      return getFirstTermFrom(str);
+    }
+
+    return getFirstTermFrom(str) + calculate(str.substr(indexOfOperation + 1));
   }
 
-  return getFirstTermFrom(str) + calculate(str.substr(indexOfOperation + 1));
+  function factorial(n) {
+    if (n < 2) { return 1 }
+
+    return n * factorial(n - 1);
+  }
+
 }
-
-function factorial(n) {
-  if (n < 2) { return 1 }
-
-  return n * factorial(n - 1);
-}
-
 /// ----
+{
 
-function getFirstTermFrom(str) {
-  let strResult = "";
-  for (let i = 0; i < str.length; i += 1) {
-    if (!isOperation(str[i])) {
-      strResult += str[i]
+  function getFirstTermFrom(str) {
+    let strResult = "";
+    for (let i = 0; i < str.length; i += 1) {
+      if (!isOperation(str[i])) {
+        strResult += str[i]
+      } else {
+        return Number(strResult);
+      }
+    }
+
+    return Number(strResult);
+  }
+
+  function isOperation(s) {
+    return s == "+" || s == "-" || s == "*" || s == "/";
+  }
+
+  function getOperation(str) {
+    for (let i = 0; i < str.length; i += 1) {
+      if (isOperation(str[i])) {
+        return str[i];
+      }
+    }
+
+  }
+
+  let s = "213+14";
+
+
+  // H.A. #1 add "/", "*"
+
+  // H.A. #2
+  function getIndexOfOperation(str) {
+    for (let i = 0; i < str.length; i += 1) {
+      if (isOperation(str[i])) {
+        return i;
+      }
+    }
+
+    return -1;
+  }
+
+  function calculate(str, sign = 1) {
+    const indexOfOperation = getIndexOfOperation(str);
+
+    const firstValue = sign * getFirstTermFrom(str);
+
+    if (indexOfOperation == -1) {
+      return firstValue;
+    }
+
+    if (getOperation(str) == "-") {
+      sign = -1;
     } else {
-      return Number(strResult);
+      sign = 1;
     }
+
+    return firstValue
+      + calculate(str.substr(indexOfOperation + 1), sign);
   }
 
-  return Number(strResult);
+  // H.A. #3
+  s = "1+2-13+14-7";
+
+  console.log(calculate(s))// -3
+
+  // const input = prompt("Input calculations");
+  // const result = calculate(input);
+  // alert("result: " + result);
 }
-
-function isOperation(s) {
-  return s == "+" || s == "-" || s == "*" || s == "/";
-}
-
-function getOperation(str) {
-  for (let i = 0; i < str.length; i += 1) {
-    if (isOperation(str[i])) {
-      return str[i];
-    }
-  }
-
-}
-
-let s = "213+14";
-
-
-// H.A. #1 add "/", "*"
-
-// H.A. #2
-function getIndexOfOperation(str) {
-  for (let i = 0; i < str.length; i += 1) {
-    if (isOperation(str[i])) {
-      return i;
-    }
-  }
-
-  return -1;
-}
-
-function calculate(str, sign = 1) {
-  const indexOfOperation = getIndexOfOperation(str);
-
-  const firstValue = sign * getFirstTermFrom(str);
-
-  if (indexOfOperation == -1) {
-    return firstValue;
-  }
-
-  if (getOperation(str) == "-") {
-    sign = -1;
-  } else {
-    sign = 1;
-  }
-
-  return firstValue
-    + calculate(str.substr(indexOfOperation + 1), sign);
-}
-
-// H.A. #3
-s = "1+2-13+14-7";
-
-console.log(calculate(s))// -3
-
-    // const input = prompt("Input calculations");
-    // const result = calculate(input);
-    // alert("result: " + result);
