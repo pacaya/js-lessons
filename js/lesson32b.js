@@ -91,3 +91,30 @@ const clients = [
 // 1. Сортированный список клиентов с информацией об общей стоимости корзины для каждого, сортировка по стоимости корзины, в убывающем порядке
 // 2. Сортированный список только тех клиентов, стоимость корины у которых превосходит 3 евро, с информацией об общей стоимости корзины для каждого, сортировка по стоимости корзины, в убывающем порядке
 // 3. Сортированный список только тех клиентов, стоимость корины у которых превосходит 3 евро, с информацией об общей стоимости корзины для каждого, сортировка по самой дорогой покупке, в убывающем порядке
+
+{ console.log(clients.map(obj=> ({name:obj.name, prices:obj.goods.reduce((prev, cur) => prev + prices[cur], 0)}
+  )).sort((a, b) => b.prices - a.prices ))}
+
+{
+  console.log(clients
+    .map(obj => ({ name: obj.name, prices: obj.goods.reduce((prev, cur) => prev + prices[cur], 0) }))
+    .filter(p => p.prices >= 3)
+    .sort((a, b) => b.prices - a.prices)
+  )
+}
+
+{
+  console.log(clients
+    .map(obj => ({
+      name: obj.name,
+      MaxPrice: obj.goods.reduce((prev, cur) => {
+        if (prev > prices[cur]) { return prev }
+        else { return prices[cur] }
+      }, Number.NEGATIVE_INFINITY),
+      totalPrice: obj.goods.reduce((prev, cur) => prev + prices[cur], 0)
+    }))
+
+    .filter(p => p.totalPrice >= 3)
+    .sort((a, b) => b.MaxPrice - a.MaxPrice)
+  )
+}

@@ -28,15 +28,15 @@
       <div class="todo-filter">
         <input type="text" name='filter' id='filter' placeholder="filter">
       </div>
-      <ul class="no-bullet">
+      <ul class="no-bullet" id="task-list">
         <li class='todo-item' id="item1">
           <input type="checkbox" /> 
           task 1 
           <a class="delete" href="#">x</a>
-        </li>
+        </li> 
         <li class='todo-item' id="item2"><input type="checkbox" /> task 2 <a
-            class="delete new" href="#">x</a></li>
-        <li class='todo-item' id="item3"><input type="checkbox" /> task 3 <a
+            class="delete new" href="#">x</a>
+        </li><li class='todo-item' id="item3"><input type="checkbox" /> task 3 <a
             class="delete" href="#">x</a></li>
         <li class='todo-item' id="item4"><input type="checkbox" /> task 4 <a
             class="delete" href="#">x</a></li>
@@ -44,8 +44,14 @@
       <hr />
       <button class='clear-tasks button'>Clear Tasks</button>
     </div>
-
-  <script src="./js/lesson28b.js"></script>
+    <ol>
+      <li class="todo-item">element 1</li>
+      <li class="todo-item">element 2</li>
+      <li class="todo-item">element 3</li>
+      <li>element 3</li>
+    </ol>
+    <p class="todo-item"></p>
+  <script src="./js/lesson33b.js"></script>
 </body>
 
 </html>
