@@ -1,0 +1,25 @@
+{
+  "name": "lesson2",
+  "version": "1.0.0",
+  "description": "This repository contains the code examples and home assignment solutions that were used during live lectures",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pacaya/js-lessons.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pacaya/js-lessons/issues"
+  },
+  "homepage": "https://github.com/pacaya/js-lessons#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
