@@ -11,7 +11,8 @@ const port = 3000;
 
 const state = {
   count: 0,
-  items: []
+  items: [],
+  tasks: [],
 };
 
 app.use(express.static("public"));
@@ -45,7 +46,31 @@ app.get('/api/text-result', function(req, res) {
   res.json({ items: state.items });
 });
 
+let id = 1;
 
+app.post('/api/task', (req, res) => {
+  const task = { id, text: req.body.text, isDone: req.body.isDone };
+  state.tasks.push(task);
+  id += 1;
+  res.json(task);
+});
+
+app.post('/api/task/:id/update', (req, res) => {
+  const id = Number(req.params.id);
+  const isDone = req.body.isDone;
+
+  for(let i = 0; i < state.tasks.length; i += 1) {
+    if (state.tasks[i].id === id) {
+      state.tasks[i].isDone = isDone;
+      break;
+    }
+  }
+  res.end();
+})
+
+app.get('/api/tasks', (req, res) => {
+  res.json(state.tasks);
+});
 // app.get('/api/add/:num', function(request, response) {
 //   console.log("add", request.params);
 //   state.count += Number(request.params.num);
