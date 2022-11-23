@@ -7,7 +7,7 @@ const path = require("path");
 const app = express();
 
 // settings
-const port = 3000;
+const port = 3003;
 
 const state = {
   count: 0,
