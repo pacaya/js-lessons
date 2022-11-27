@@ -18,8 +18,16 @@
     <div class="add-todo">
       <form id='todo-form' class="grid-x">
         <input placeholder="New Task" id='new-item-text' name="text" type="text"
-          class="cell small-10" />
+          class="cell small-10" />  
         <button class="button cell small-2">Add</button>
+        <br />
+        <input type="checkbox" />
+        <input type="date" />
+        <!-- 
+          two type of tasks:
+          Task {id, text, isDone}
+          UrgentTask extends Task {id, text, isDone, dueDate}
+         -->
       </form>
     </div>
     <hr />
